@@ -39,4 +39,4 @@ const orderschema = new schema({
 }
 )
 const order = mongoose.model("order",cartschema)
-module.exports = order;
+module.exports = {order};
