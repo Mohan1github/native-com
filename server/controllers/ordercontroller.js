@@ -18,7 +18,7 @@ const createorder = async(req,res)=>{
 const cancelorder = async(req,res)=>{
     const id = req.params.id;
     try{
-        const deleteorder = await order.findBIdAndDelete({id:id})
+        const deleteorder = await order.findBIdAndDelete({_id:id})
         if(deleteorder){
             res.status(200).json({success:true,msg:"order cancelled successfully!"})
         }
@@ -33,7 +33,7 @@ const cancelorder = async(req,res)=>{
 const getorders = async(req,res) =>{
     const userId = req.userid;
     try{
-        const orderslist = await user.findById({id:userId}).populate("order").sort({createdAt:-1})
+        const orderslist = await user.findById({_id:userId}).populate("order").sort({createdAt:-1})
         if(orderslist){
             res.status(200).json({success:true,orders:orderslist})
         }

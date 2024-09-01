@@ -59,7 +59,7 @@ const getallproduct = async(req,res)=>{
 const getproductbyid = async(req,res)=>{
     const id = req.params.id;
     try{
-        const product = await product.fondById({id:id})
+        const product = await product.fondById({_id:id})
         if(product){
             res.status(200).json({success:true,data:product})
         }
@@ -74,7 +74,7 @@ const getproductbyid = async(req,res)=>{
 const deleteproduct = async(req,res)=>{
     const id = req.params.id;
     try{
-        const actiondel = await product.findByIdAndDelete({id:id})
+        const actiondel = await product.findByIdAndDelete({_id:id})
         if(actiondel){
              res.status(200).json({success:true,msg:"Product deleted successfully"})
         }
@@ -90,7 +90,7 @@ const updateproduct = async(req,res)=>{
     const id = req.params.id;
     try
     {
-        const updated = await product.findByIdAndDelete({id:id},{
+        const updated = await product.findByIdAndDelete({_id:id},{
             $set:req.body
         },{
             new:true

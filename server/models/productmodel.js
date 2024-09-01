@@ -28,7 +28,7 @@ const productschema = new schema({
     },
     price:{
         type:Number
-    }
+    },
 },
 {
     timestamps:true

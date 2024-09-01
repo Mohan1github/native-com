@@ -41,7 +41,7 @@ const getallcart = async(req,res)=>{
 const getcartbyid = async(req,res)=>{
     const id = req.params.id;
     try{
-        const cart = await cart.fondById({id:id})
+        const cart = await cart.fondById({_id:id})
         if(cart){
             res.status(200).json({success:true,data:cart})
         }
@@ -56,7 +56,7 @@ const getcartbyid = async(req,res)=>{
 const deletecart = async(req,res)=>{
     const id = req.params.id;
     try{
-        const actiondel = await cart.findByIdAndDelete({id:id})
+        const actiondel = await cart.findByIdAndDelete({_id:id})
         if(actiondel){
              res.status(200).json({success:true,msg:"cart deleted successfully"})
         }
@@ -73,7 +73,7 @@ const updatecart = async(req,res)=>{
     const id = req.params.id;
     try
     {
-        const updated = await cart.findByIdAndDelete({id:id},{
+        const updated = await cart.findByIdAndDelete({_id:id},{
             $set:req.body
         },{
             new:true

@@ -9,4 +9,4 @@ userrouter.post("/create-user",verifyauth,deleteuser)
 userrouter.put("/update-user/:id",verifyauth,updateuser)
 userrouter.put("/block-user/:id",verifyauth,verifyisadmin,blockuser)
 userrouter.put("/unblock-user/:id",verifyauth,verifyisadmin,unblockuser)
-module.exports = {userrouter};
+module.exports = {userrouter};   
