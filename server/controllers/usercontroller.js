@@ -20,7 +20,7 @@ const getalluser = async(req,res)=>{
 const getuser = async(req,res)=>{
     const id = req.params.id;
     try{
-        const userdata = await user.findById({id:id})
+        const userdata = await user.findById({_id:id})
         const{password:pass,...rest} = userdata._doc
         if(userdata){
             res.status(200).json({msg:"Data found",data:rest})
@@ -33,7 +33,7 @@ const getuser = async(req,res)=>{
 const deleteuser = async(erq,res)=>{
     const id = req.params.id;
     try{
-        const finduser = await user.findByIdAndDelete({id:id})
+        const finduser = await user.findByIdAndDelete({_id:id})
         if(finduser){
             res.status(200).json({msg:"user deleted successfully"})
         }
@@ -70,7 +70,7 @@ const updateuser = async(req,res)=>{
 const blockuser = async(req,res)=>{
     const id = req.body
     try{
-        const finduser = await user.findById({id:id})
+        const finduser = await user.findById({_id:id})
         if(finduser){
             if(finduser.isBlocked == true){
                 res.status(401).json({msg:"User already blocked"});
@@ -91,7 +91,7 @@ const blockuser = async(req,res)=>{
 const unblockuser = async(req,res)=>{
     const id = req.body
     try{
-        const finduser = await user.findById({id:id})
+        const finduser = await user.findById({_id:id})
         if(finduser){
             if(finduser.isBlocked == false){
                 res.status(401).json({msg:"User already unblocked"});
