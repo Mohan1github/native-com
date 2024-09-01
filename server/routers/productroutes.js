@@ -1,0 +1,12 @@
+const express = require('express')
+const productrouter = express.Router()
+const {getallproduct,getproductbyid,deleteproduct,updateproduct,createproduct} = require("../controllers/productcontroller")
+const {verifyauth} = require("../middlewares/verify")
+const {verifyisadmin} = require("../middlewares/verifyadmin")
+const {parser} = require("../utils/cloudinary")
+productrouter.post("/create-product",verifyauth,verifyisadmin,parser.single("productImage"),createproduct)
+productrouter.get("/getallproduct",verifyauth,getallproduct)
+productrouter.get("/getproduct/:id",verifyauth,getproductbyid)
+productrouter.delete("/deleteproduct/:id",verifyauth,verifyisadmin,deleteproduct)
+productrouter.put("/update-product/:id",verifyauth,updateproduct)
+module.exports = {productrouter};

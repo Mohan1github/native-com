@@ -1,0 +1,12 @@
+const express = require('express')
+const userrouter = express.Router()
+const {getalluser,getuser,deleteuser,updateuser,blockuser,unblockuser} = require("../controllers/usercontroller")
+const {verifyauth} = require("../middlewares/verify")
+const {verifyisadmin} = require("../middlewares/verifyadmin")
+userrouter.get("/getalluser",verifyauth,verifyisadmin,getalluser)
+userrouter.get("/getuser/:id",verifyauth,verifyisadmin,getuser)
+userrouter.post("/create-user",verifyauth,deleteuser)
+userrouter.put("/update-user/:id",verifyauth,updateuser)
+userrouter.put("/block-user/:id",verifyauth,verifyisadmin,blockuser)
+userrouter.put("/unblock-user/:id",verifyauth,verifyisadmin,unblockuser)
+module.exports = {userrouter};
