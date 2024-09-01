@@ -36,19 +36,20 @@ const getallproduct = async(req,res)=>{
     let products;
     try{
         if(qlatest){
-         products = await product.find().sort({createdAt:-1}).limit(5);}
+         products = await product.find().sort({createdAt:-1}).limit(5).populate("review").sort({createdAt:-1}).limit(5);
+        }
          else if(qcategory){
             product = await product.find({
                 category:{
                     $in:[qcategory]
                 }
-            })
+            }).populate("review").sort({createdAt:-1}).limit(5);
          }
         if(products.lenght>0){
            
         }
         else{
-            product = await product.find();
+            product = await product.find().populate("review").sort({createdAt:-1}).limit(5);;
         }
         return res.status(200).json({success:true,data:products})
     }
