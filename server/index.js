@@ -9,6 +9,7 @@ const cartrouter = require("./routers/cartroutes")
 const userrouter = require("./routers/userroutes")
 const orderrouter = require("./routers/orderroutes")
 const paymentrouter = require("./routers/paymentroutes")
+const reviewrouter = require("./routers/reviewroutes")
 require("dotenv").config()
 app.use(bodyParser)
 app.use("/api/v1/auth",authrouter);
@@ -16,7 +17,8 @@ app.use("/api/v1/products",productrouter);
 app.use("/api/v1/carts",cartrouter);
 app.use("/api/v1/users",userrouter);
 app.use("/api/v1/orders",orderrouter);
-app.use("/api/v1/payments",paymentrouter)
+app.use("/api/v1/payments",paymentrouter);
+app.use("/api/v1/reviews",reviewrouter);
 const corsOption = [origin="*"]
 app.use(cors(corsOption))
 app.listen(process.env.PORT,()=>{
