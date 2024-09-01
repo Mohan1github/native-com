@@ -57,5 +57,4 @@ const deletereviews =async(req,res)=> {
         res.status(500).json({success:false,msg:"Internal server error"});
     }
 }
-
 module.exports = {createreview,deletereviews}
