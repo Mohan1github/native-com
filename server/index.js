@@ -10,6 +10,7 @@ const userrouter = require("./routers/userroutes")
 const orderrouter = require("./routers/orderroutes")
 const paymentrouter = require("./routers/paymentroutes")
 const reviewrouter = require("./routers/reviewroutes")
+const { issuerouter } = require("./routers/productissueroutes")
 require("dotenv").config()
 app.use(bodyParser)
 app.use("/api/v1/auth",authrouter);
@@ -19,6 +20,7 @@ app.use("/api/v1/users",userrouter);
 app.use("/api/v1/orders",orderrouter);
 app.use("/api/v1/payments",paymentrouter);
 app.use("/api/v1/reviews",reviewrouter);
+app.uise("/api/v1/complaints",issuerouter)
 const corsOption = [origin="*"]
 app.use(cors(corsOption))
 app.listen(process.env.PORT,()=>{

@@ -74,7 +74,7 @@ const orderstatuschanger = async(req,res) =>{
         if(findorder){
                 if(state === "delivered"){
                     await findorder.status.$set(state);
-                    await findorder.save().then(()=>{
+                     findorder.save().then(()=>{
                         res.staus(200).json({success:true,msg:"order status updated!"});
                     })
                 }
@@ -88,7 +88,7 @@ const cancelorder = async(req,res)=>{
     try{
         const findorder = await order.findById({_id:req.params.id})
         if(findorder.status === "pending" || findorder.status === "dispatched"){
-            await findorder.status.$set("cancelled").save().then(()=>{
+             findorder.status.$set("cancelled").save().then(()=>{
                 res.status(200).json({success:true,msg:"order cancelled successfully"})
             })
         }
