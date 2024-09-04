@@ -15,4 +15,4 @@ const customermodel = new Schema({
 
 },{timestamps:true});
 const customer = mongoose.model("customer",customermodel)
-module.exports = {customermodel}
+module.exports = {customer}
