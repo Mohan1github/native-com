@@ -1,5 +1,5 @@
 const express = require("express")
-const cutormer = require("../models/customermodel")
+const customer = require("../models/customermodel")
 
 const getcustomers = async(req,res)=>{
     try{
