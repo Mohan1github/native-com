@@ -30,4 +30,19 @@ const getcustomerbyid = async(req,res)=>{
         res.status(500).json({success:false,msg:"ineternal server error!"});
     }
 }
-module.exports = {getcustomers,getcustomerbyid}
+const deletecustomer = async(req,res)=>{
+    const id = req.params.id;
+    try{
+        const findanddelete = await customer.findByIdAndDelete({_id:id});
+        if(findanddelete){
+            res.status(200).json({success:true,msg:"customer deleted"})
+        }
+        else{
+            res.status(401).json({success:false,msg:"error deleting customer"})
+        }
+    }
+    catch(err){
+        res.status(500).json({success:false,msg:"ineternal server error!"});
+    }
+}
+module.exports = {getcustomers,getcustomerbyid,deletecustomer}
