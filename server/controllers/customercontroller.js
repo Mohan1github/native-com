@@ -45,4 +45,26 @@ const deletecustomer = async(req,res)=>{
         res.status(500).json({success:false,msg:"ineternal server error!"});
     }
 }
-module.exports = {getcustomers,getcustomerbyid,deletecustomer}
+const createcustomer = async(req,res)=>{
+    const cusname = req.body.name;
+    try{
+        const findcustomer = await customer.findOne({name:cusname});
+        if(findcustomer){
+            res.status(401).json({success:false,msg:"customer already exist"});
+        }
+        else{
+            const newcustomer = new customer(req.body)
+            newcustomer.save().then(()=>{
+                consolo.log("Success")
+                res.status(200).json({success:true,msg:"customer created successfully"})
+            }).catch((err)=>{
+                cosole.log(err);
+                res.status(401).json({success:false,msg:"Something went wrong!"});
+            })
+        }
+    }
+    catch(err){
+        res.status(500).json({success:false,msg:"ineternal server error!"});
+    }
+}
+module.exports = {getcustomers,getcustomerbyid,deletecustomer,createcustomer}

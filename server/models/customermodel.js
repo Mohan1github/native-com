@@ -5,13 +5,11 @@ const customermodel = new Schema({
         type:String,
         required:true,
     },
-    business_type:[{
-        type:String,
-    }],
-    product_types:[{
-        type:String,
+    business_type: {type:Array},
+    product_types:{
+        type:Array,
         required:true
-    }],
+    },
 
 },{timestamps:true});
 const customer = mongoose.model("customer",customermodel)
