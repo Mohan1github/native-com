@@ -27,6 +27,10 @@ const userschema = new schema({
     isBlocekd:{
         type:Boolean,
         default:false,
+    },
+    address:{
+        type:String,
+        required:true,
     }
 },{timestapms:true})
 const user = mongoose.model("user",userschema);
