@@ -28,4 +28,5 @@ const createissue = async(req,res)=>{
         res.statua(500).json({success:false,msg:"Internal server error"});
     }
 }
+
 module.exports = {createissue}
