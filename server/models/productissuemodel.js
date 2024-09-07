@@ -16,6 +16,10 @@ const issuemodel = new schema({
         minlength:10,
         maxlength:100
     }],
+    status:{
+        type:String,
+        default:"pending"
+    },
     createdAt:{
         type:Date
     }
