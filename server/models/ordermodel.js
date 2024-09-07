@@ -26,7 +26,7 @@ const orderschema = new schema({
         required:true    
     },
     address:{
-        type:string,
+        type:String,
         required:true
     },
     status:{
@@ -38,5 +38,5 @@ const orderschema = new schema({
     timestamps:true
 }
 )
-const order = mongoose.model("order",cartschema)
+const order = mongoose.model("order",orderschema)
 module.exports = {order};

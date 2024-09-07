@@ -1,4 +1,4 @@
-const express = reuire("express")
+const express = require("express")
 const mongoose = require("mongoose")
 const schema = mongoose.Schema
 const reviewschema = new schema({
@@ -21,7 +21,7 @@ const reviewschema = new schema({
             default:0,
         },
         createdAt:{
-            type:Date(),
+            type:Date,
         }
     }]
 },{
