@@ -1,8 +1,8 @@
 const express = require("express")
 const review = require("../models/reviewmodel")
-const product = require("")
+const product = require("../models/productissuemodel")
 const createreview = async(req,res)=>{
-    const prodid = req.params.id
+    const prodid = req.params.productid
     try{
         const findproduct = await product.findById({_id:prodid});
          if(!findproduct){
@@ -32,8 +32,8 @@ const createreview = async(req,res)=>{
     }
 }
 const deletereviews =async(req,res)=> {
-    const review_id = req.params.id;
-    const userid = req.params.id;
+    const review_id = req.params.reviewid;
+    const userid = req.userid;
     try{
         const findreview = await review.findById({_id:review_id})
         if(findreview){

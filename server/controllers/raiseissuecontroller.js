@@ -1,12 +1,12 @@
 const issue = require("../models/productissuemodel");
 const createissue = async(req,res)=>{
-    const issueid = req.body.issueid
+    const issueid = req.params.issueid
     try{
-        const findissue = await issue.find({_id:issueid})
+        const findissue = await issue.findAndUpdate({_id:issueid},{$push:{complaint:req.body}})
         if(findissue){
             const newissue = req.body;
             const issue = newissue.select("complaint")
-            const pushed  = await findissue.complaint.push(issue);
+            // const pushed  = await findissue.complaint.push(issue);
             if(pushed){
                 try{
                     await issue.save();

@@ -10,7 +10,7 @@ const createcart = async(req,res) =>{
             const newcart = new product({
                     userid:req.userid,
                     des:req.body.desc,
-                    products:products.push(req.body)
+                    products:req.body
             })
             await newcart.save().then(()=>{
                 res.status(201).json({success:true,msg:"cart created successfully"})
